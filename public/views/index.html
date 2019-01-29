@@ -1,0 +1,78 @@
+<div class="alert alert-danger" data-ng-show="flashMessage">
+  {{$root.flashMessage}}
+</div>
+<div data-ng-include src="'views/includes/connection.html'"></div>
+<section data-ng-controller="IndexController" data-ng-init="index()">
+  <div class="container">
+    <div id="home" class="row">
+      <div class="col-xs-12 col-md-12">
+
+        <div id="search-form-mobile" class="visible-xs" data-ng-include src="'views/includes/search.html'"></div>
+
+        <h1 translate>Latest Blocks</h1>
+        <table class="table table-hover table-striped" style="table-layout: fixed">
+          <thead>
+            <tr>
+              <th translate>Height</th>
+              <th translate>Age</th>
+              <th class="text-right"><span class="ellipsis" translate>Transactions</span></th>
+              <th class="text-right hidden-xs"><span class="ellipsis" translate>Mined by</span></th>
+              <th class="text-right" translate>Size</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-show="!blocks.length"><td colspan="5" translate>Waiting for blocks...</td></tr>
+          <tr class="fader" data-ng-repeat='b in blocks'>
+            <td>
+              <a href="block/{{b.hash}}">{{b.height}}</a>
+            </td>
+            <td><span class="ellipsis">{{humanSince(b.time)}}</span></td>
+            <td class="text-right">{{b.txlength}}</td>
+            <td class="text-right hidden-xs"><a href="{{b.poolInfo.url}}" title="{{b.poolInfo.poolName}}" target="_blank" data-ng-show="b.poolInfo">{{b.poolInfo.poolName}}</a></td>
+            <td class="text-right">{{b.size}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="btn-more">
+          <a href="blocks" class="btn btn-default" translate>See all blocks</a>
+        </div>
+
+        <h2 translate>Latest Transactions</h2>
+
+        <table class="table table-hover table-striped" style="table-layout: fixed;">
+          <thead>
+            <tr>
+              <th>Hash</th>
+              <th class="text-right" translate>Value Out</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-show="!txs.length"><td colspan="3" translate>Waiting for transactions...</td></tr>
+          <tr class="fader" data-ng-repeat='tx in txs'>
+            <td>
+              <a class="ellipsis" href="tx/{{tx.txid}}">{{tx.txid}}</a>
+            </td>
+            <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' BTG'}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="col-xs-12 col-md-12 col-gray" style="margin-top: 20px;">
+        <h3 translate style="margin-top: 0px">About</h3>
+        <p translate>This is a Bithereum Insight instance. It is a Bithereum Blockchain Explorer and web application service presenting the <a href="https://github.com/BTHPOS/insight" target="_blank">Insight UI</a> and <a href="https://github.com/BTHPOS/insight-api" target="_blank">Insight API</a>. It runs on a full Bithereum Bitcore Node and is hosted by the Bithereum Organization.</p>
+        <p translate>Open source project originally written by <a href="https://bitpay.com" target="_blank">bitpay</a>.</p>
+        <p translate>Source code <a href="https://github.com/BTHPOS/bitcore" target="_blank">here</a> and in linked packages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer2" role="navigation">
+  <div class="container" data-ng-controller="FooterController">
+    <div class="links m20t pull-left">
+     <span style="float:left; padding-left:14px;">All rights reserved Bithereum</span> <a href="tx/send" translate style="float:right; padding-right:14px;">Broadcast Transaction</a>
+    </div>
+  </div>
+</div>
