@@ -13,7 +13,7 @@
  }
 
  .navbar-default, .txvalues-succes, .block-id, #footer {
-     background-color:#132c47 !important;
+     background-color:#1D2631 !important;
      -webkit-backdrop-filter: blur(10px);
  }
  .txvalues-primary, #ngProgress, .progress-bar {
@@ -26,8 +26,8 @@
     margin-top: 12px;
 }
 .btn-info {
-    background-color:#132c47 !important;
-    border-color: #132c47 !important;
+    background-color:#1D2631 !important;
+    border-color: #1D2631 !important;
 }
 #footer {
   display: none;
