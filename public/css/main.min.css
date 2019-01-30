@@ -9,7 +9,7 @@
 
  .btn-primary {
    border: 0 !important;
-   background-color: #EBA809 !important;
+   background-color: #FFC345 !important;
  }
 
  .navbar-default, .txvalues-succes, .block-id, #footer {
@@ -17,7 +17,7 @@
      -webkit-backdrop-filter: blur(10px);
  }
  .txvalues-primary, #ngProgress, .progress-bar {
-   background-color: #EBA809 !important;
+   background-color: #FFC345 !important;
  }
 .navbar-form .form-control, .status {
      background-color:rgba(255,255,255, .4) !important;
@@ -29,10 +29,17 @@
     background-color:#1D2631 !important;
     border-color: #1D2631 !important;
 }
+a {
+  color: #000000!important;
+}
+a:hover {
+  color: #FFC345!important;
+}
 #footer {
   display: none;
 }
 #footer2 {
+    display: none;
     text-align: center !important;
     color:#ccc;
     height:51px;
